@@ -1,42 +1,154 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  background-color: #fff5f7;
+  font-family: "Comic Sans MS", "Marker Felt", cursive;
+}
+
+.app-container {
+  padding: 40px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.title {
+  color: #ff6b9c;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.staff-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  margin: 0 auto 30px;
+  background: linear-gradient(to bottom,
+    transparent 42.5%, #ff9ebd 42.5%, #ff9ebd 43.5%, transparent 43.5%,
+    transparent 52.5%, #ff9ebd 52.5%, #ff9ebd 53.5%, transparent 53.5%,
+    transparent 62.5%, #ff9ebd 62.5%, #ff9ebd 63.5%, transparent 63.5%,
+    transparent 72.5%, #ff9ebd 72.5%, #ff9ebd 73.5%, transparent 73.5%,
+    transparent 82.5%, #ff9ebd 82.5%, #ff9ebd 83.5%, transparent 83.5%
+  );
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.staff-image {
+  width: 300px;
+  height: auto;
 }
 
-.card {
-  padding: 2em;
+.note {
+  position: absolute;
+  left: 140px; /* 五線譜の中央あたりに表示 */
+  font-size: 32px;
 }
 
-.read-the-docs {
-  color: #888;
+.g-clef-image {
+  position: absolute;
+  left: 20px;
+  height: 120px;
+  top: 40px;
+}
+
+.note-container {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+}
+
+.note-head {
+  position: absolute;
+  width: 24px;
+  height: 18px;
+  background: #ff6b9c;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  left: 0;
+  top: 50%;
+  margin-top: -9px;
+}
+
+.note-stem {
+  position: absolute;
+  width: 3px;
+  height: 55px;
+  background: #ff6b9c;
+  left: 22px;
+  bottom: 50%;
+}
+
+.note-stem.stem-down {
+  left: -1px;
+  bottom: auto;
+  top: 50%;
+}
+
+.ledger-line {
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background: #ff9ebd;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.note-button {
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #ffd6e4, #ff9ebd);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Comic Sans MS", "Marker Felt", cursive;
+}
+
+.note-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.note-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.note-button.selected {
+  background: linear-gradient(145deg, #ff9ebd, #ff6b9c);
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  animation: bounce 0.5s ease;
+}
+
+.message.correct {
+  color: #4CAF50;
+}
+
+.message.incorrect {
+  color: #ff6b9c;
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
