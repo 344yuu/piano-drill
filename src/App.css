@@ -1,5 +1,5 @@
 body {
-  background-color: #fff5f7;
+  background-color: #f0f7f0;
   font-family: "Comic Sans MS", "Marker Felt", cursive;
 }
 
@@ -9,7 +9,7 @@ body {
 }
 
 .title {
-  color: #ff6b9c;
+  color: #4CAF50;
   font-size: 2.5em;
   margin-bottom: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -18,20 +18,21 @@ body {
 .staff-container {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   height: 200px;
   margin: 0 auto 30px;
   background: linear-gradient(to bottom,
-    transparent 42.5%, #ff9ebd 42.5%, #ff9ebd 43.5%, transparent 43.5%,
-    transparent 52.5%, #ff9ebd 52.5%, #ff9ebd 53.5%, transparent 53.5%,
-    transparent 62.5%, #ff9ebd 62.5%, #ff9ebd 63.5%, transparent 63.5%,
-    transparent 72.5%, #ff9ebd 72.5%, #ff9ebd 73.5%, transparent 73.5%,
-    transparent 82.5%, #ff9ebd 82.5%, #ff9ebd 83.5%, transparent 83.5%
+    transparent 42.5%, #000000 42.5%, #000000 43.5%, transparent 43.5%,
+    transparent 52.5%, #000000 52.5%, #000000 53.5%, transparent 53.5%,
+    transparent 62.5%, #000000 62.5%, #000000 63.5%, transparent 63.5%,
+    transparent 72.5%, #000000 72.5%, #000000 73.5%, transparent 73.5%,
+    transparent 82.5%, #000000 82.5%, #000000 83.5%, transparent 83.5%
   );
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: white;
+  pointer-events: none;
 }
 
 .staff-image {
@@ -47,9 +48,11 @@ body {
 
 .g-clef-image {
   position: absolute;
-  left: 20px;
-  height: 120px;
-  top: 40px;
+  left: -80px;
+  height: 170px;
+  top: 75px;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .note-container {
@@ -58,27 +61,31 @@ body {
   transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .note-head {
   position: absolute;
   width: 24px;
   height: 18px;
-  background: #ff6b9c;
+  background: #000000;
   border-radius: 50%;
   transform: rotate(-20deg);
   left: 0;
   top: 50%;
   margin-top: -9px;
+  pointer-events: none;
 }
 
 .note-stem {
   position: absolute;
   width: 3px;
   height: 55px;
-  background: #ff6b9c;
+  background: #000000;
   left: 22px;
   bottom: 50%;
+  pointer-events: none;
 }
 
 .note-stem.stem-down {
@@ -91,10 +98,11 @@ body {
   position: absolute;
   width: 40px;
   height: 2px;
-  background: #ff9ebd;
+  background: #000000;
   left: -8px;
   top: 50%;
   transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .buttons-container {
@@ -103,6 +111,8 @@ body {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 20px;
+  pointer-events: auto;
+  padding: 20px;
 }
 
 .note-button {
@@ -110,41 +120,137 @@ body {
   font-size: 18px;
   border: none;
   border-radius: 25px;
-  background: linear-gradient(145deg, #ffd6e4, #ff9ebd);
+  background: linear-gradient(145deg, #aafeae, #4CAF50);
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: "Comic Sans MS", "Marker Felt", cursive;
+  pointer-events: auto;
+}
+
+/* 各ボタンの位置調整 */
+.note-button:nth-child(1) { transform: translateY(-10px); }
+.note-button:nth-child(2) { transform: translateY(15px); }
+.note-button:nth-child(3) { transform: translateY(-5px); }
+.note-button:nth-child(4) { transform: translateY(10px); }
+.note-button:nth-child(5) { transform: translateY(-15px); }
+.note-button:nth-child(6) { transform: translateY(5px); }
+.note-button:nth-child(7) { transform: translateY(-8px); }
+.note-button:nth-child(8) { transform: translateY(12px); }
+
+/* アニメーションのキーフレームを追加 */
+@keyframes float1 {
+  0%, 100% { transform: translateY(-10px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(15px); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translateY(-5px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float4 {
+  0%, 100% { transform: translateY(10px); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes float5 {
+  0%, 100% { transform: translateY(-15px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes float6 {
+  0%, 100% { transform: translateY(5px); }
+  50% { transform: translateY(0px); }
+}
+
+@keyframes float7 {
+  0%, 100% { transform: translateY(-8px); }
+  50% { transform: translateY(-13px); }
+}
+
+@keyframes float8 {
+  0%, 100% { transform: translateY(12px); }
+  50% { transform: translateY(7px); }
+}
+
+/* 各ボタンにアニメーションを適用 */
+.note-button:nth-child(1) { 
+  animation: float1 3s ease-in-out infinite;
+}
+
+.note-button:nth-child(2) { 
+  animation: float2 3.2s ease-in-out infinite;
+}
+
+.note-button:nth-child(3) { 
+  animation: float3 3.4s ease-in-out infinite;
+}
+
+.note-button:nth-child(4) { 
+  animation: float4 3.6s ease-in-out infinite;
+}
+
+.note-button:nth-child(5) { 
+  animation: float5 3.8s ease-in-out infinite;
+}
+
+.note-button:nth-child(6) { 
+  animation: float6 3.3s ease-in-out infinite;
+}
+
+.note-button:nth-child(7) { 
+  animation: float7 3.5s ease-in-out infinite;
+}
+
+.note-button:nth-child(8) { 
+  animation: float8 3.7s ease-in-out infinite;
 }
 
 .note-button:hover {
-  transform: translateY(-2px);
+  animation-play-state: paused;
+  transform: scale(1.1);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(145deg, #66bb6a, #43a047);
 }
 
 .note-button:active {
-  transform: translateY(1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .note-button.selected {
-  background: linear-gradient(145deg, #ff9ebd, #ff6b9c);
+  background: linear-gradient(145deg, #66bb6a, #2e7d32);
 }
 
 .message {
   margin-top: 20px;
   font-size: 24px;
   font-weight: bold;
-  animation: bounce 0.5s ease;
+  /* animation: bounce 0.5s ease; */
+  height: 36px;  /* 固定の高さを設定 */
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.message:empty {
+  visibility: hidden;
+  height: 36px;  /* メッセージがない時も同じ高さを維持 */
+  margin-top: 20px;
 }
 
 .message.correct {
-  color: #4CAF50;
+  color: #2e7d32;
 }
 
 .message.incorrect {
-  color: #ff6b9c;
+  color: #c62828;
 }
 
 @keyframes bounce {

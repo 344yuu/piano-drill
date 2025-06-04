@@ -61,10 +61,14 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <h1 className="title">音符ドリル 🎼</h1>
+      <p className={`message ${message ? (message.includes('正解') ? 'correct' : 'incorrect') : ''}`}>
+        {message}
+      </p>
+      
+      <h1 className="title">🎶 おんぷドリル 🎵</h1>
 
       <div className="staff-container">
-        <img src="/g-clef.jpg" alt="ト音記号" className="g-clef-image" />
+        <img src="g-clef.png" alt="ト音記号" className="g-clef-image" />
         {currentNote && (
           <div 
             className="note-container"
@@ -88,12 +92,6 @@ export default function App() {
           </button>
         ))}
       </div>
-
-      {message && (
-        <p className={`message ${message.includes('正解') ? 'correct' : 'incorrect'}`}>
-          {message}
-        </p>
-      )}
     </div>
   );
 }
